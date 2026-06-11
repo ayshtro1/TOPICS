@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Ayshtro Tech | Mechanical Engineering Seminar Topics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="topics.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script defer src="me_ptopics.js"></script>
+</head>
+<body>
+
+    <!-- Watermarks -->
+    <div class="watermark-small" aria-hidden="true"></div>
+    <div class="watermark-large" aria-hidden="true">AYSHTRO TECH</div>
+
+    <!-- HEADER (contact button fixed) -->
+    <header class="main-header">
+        <div class="brand">
+            <div class="brand-logo">
+                <i class="fas fa-microchip" aria-hidden="true"></i>
+                Ayshtro Tech
+            </div>
+            <div class="brand-tag"></div>
+            <div class="header-badge">
+                <i class="fas fa-chalkboard-user" aria-hidden="true"></i> Seminars &amp; Projects
+            </div>
+        </div>
+        <a href="https://wa.me/919745745513" target="_blank" rel="noopener noreferrer" class="header-contact">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            <span>9745745513</span>
+            <i class="fas fa-headset" aria-hidden="true"></i>
+        </a>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+        <h1>
+            ⚙️ Mechanical Engineering Project Topics ⚙️
+            <span>WhatsApp for projects → 9745745513</span>
+        </h1>
+
+        <div class="search-container">
+            <input
+                type="text"
+                id="search-input"
+                placeholder="🔍 Search topics (e.g., Heat Shield, EMUs)..."
+                autocomplete="off"
+                spellcheck="false"
+                aria-label="Search seminar topics"
+            >
+            <button type="button" aria-label="Search">
+                <i class="fas fa-search" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <ul id="topics-list" class="topics-container" aria-label="Seminar topics list"></ul>
+    </main>
+
+    <!-- ✅ FIXED FLOATING WHATSAPP ICON (Font Awesome, correct number) -->
+    <a href="https://wa.me/919745745513" target="_blank" rel="noopener noreferrer" class="whatsapp-logo" aria-label="Contact on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <div class="contact-caption" aria-hidden="true">📞 Contact Us</div>
+
+    <!-- Refresh Button -->
+    <div class="refresh-container">
+        <button id="refresh-button" aria-label="Refresh topics">
+            <i class="fas fa-sync-alt" aria-hidden="true"></i>
+        </button>
+        <div class="refresh-caption" aria-hidden="true">Refresh Topics</div>
+    </div>
+
+    <!-- Modal -->
+    <div id="popup-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <span class="close" role="button" tabindex="0" aria-label="Close modal">✕ CLOSE</span>
+            <div id="ad-content">
+                <p id="modal-title">
+                    <i class="fas fa-rocket" style="color:#3b82f6;" aria-hidden="true"></i>
+                    <strong>Ayshtro Tech</strong> provides premium project reports, synopsis, and PPT at affordable cost. Quality guaranteed!
+                </p>
+                <a href="https://wa.me/919745745513" target="_blank" rel="noopener noreferrer" class="whatsapp-link">
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp
+                </a>
+            </div>
+            <button id="copy-button" type="button">📋 Copy Topic to Clipboard</button>
+        </div>
+    </div>
+
+</body>
+</html>

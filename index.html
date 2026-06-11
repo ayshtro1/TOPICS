@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayshtro Project Hub — Standard Theme</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ---------- STANDARD LIGHT THEME VARIABLES ---------- */
+    :root {
+      --bg: #ffffff;
+      --card: #ffffff;
+      --card-hover: #fef2f2;
+      --text: #111111;
+      --text-muted: #666666;
+      --border: #eeeeee;
+      --accent: #dc2626;
+      --accent-hover: #b91c1c;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ----- NAVIGATION (light) ----- */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+    .logo span { color: var(--accent); }
+
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-size: 0.9rem; color: #555555; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .btn-wa {
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-wa:hover { background: var(--accent-hover); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #111;
+      border-radius: 2px;
+    }
+
+    /* ----- HERO SECTION (light) ----- */
+    .hero {
+      text-align: center;
+      padding: 40px 24px 56px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tag {
+      display: inline-block;
+      background: #fef2f2;
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .hero h1 em { font-style: normal; color: var(--accent); }
+
+    .hero p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 32px;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .hero-btn:hover { background: var(--accent-hover); }
+
+    /* ----- SECTION COMMON ----- */
+    section { padding: 56px 32px; max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    section h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    section h2 em { font-style: normal; color: var(--accent); }
+    section > p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 36px; }
+
+    /* ----- GRID & CARDS (light) ----- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--card);
+      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s, background 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      background: var(--card-hover);
+      box-shadow: 0 8px 24px rgba(220,38,38,0.1);
+      transform: translateY(-4px);
+      border-color: #fca5a5;
+    }
+
+    .card-img {
+      height: 140px;
+      background-size: cover;
+      background-position: center;
+      background-color: #f5f5f5;
+      position: relative;
+    }
+    /* subtle overlay for readability (light) */
+    .card-img::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .card-img .badge {
+      position: absolute;
+      top: 10px; left: 10px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      z-index: 2;
+    }
+    .badge-red   { background: #fee2e2; color: #b91c1c; }
+    .badge-blue  { background: #dbeafe; color: #1d4ed8; }
+    .badge-green { background: #dcfce7; color: #15803d; }
+
+    .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; }
+
+    .card-icon {
+      width: 36px; height: 36px;
+      background: #fef2f2;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      transition: all 0.2s;
+    }
+    .card:hover .card-icon { background: var(--accent); color: #fff; }
+
+    .card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+    .card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; flex: 1; }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+    }
+    .card-footer .level { color: #999; }
+    .card-footer .browse { color: var(--accent); font-weight: 600; transition: 0.1s; }
+    .card:hover .card-footer .browse::after { content: ' →'; }
+
+    /* ----- FEATURES STRIP (light) ----- */
+    .features {
+      background: #fafafa;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .features-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 32px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+    }
+    .feat { display: flex; gap: 14px; align-items: flex-start; }
+    .feat-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: #fef2f2;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent);
+      font-size: 1rem;
+    }
+    .feat h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; color: var(--text); }
+    .feat p  { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ----- CTA SECTION (accent stays strong) ----- */
+    .cta-section {
+      padding: 0 32px 64px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .cta-box {
+      background: var(--accent);
+      border-radius: 16px;
+      padding: 48px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .cta-box h3 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .cta-box p  { color: rgba(255,255,255,0.85); font-size: 0.9rem; }
+    .cta-wa {
+      background: #fff;
+      color: var(--accent-hover);
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .cta-wa:hover { background: #f5f5f5; }
+    .cta-wa i { color: #16a34a; }
+
+    /* ----- FOOTER (light) ----- */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 32px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer .logo { font-size: 1rem; color: var(--text); }
+    footer p { font-size: 0.8rem; color: #999; }
+    .social-links { display: flex; gap: 12px; }
+    .social-links a { color: #999; font-size: 1rem; }
+    .social-links a:hover { color: var(--accent); }
+
+    /* ----- FLOAT BUTTON (whatsapp) ----- */
+    .wa-float {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      background: #16a34a;
+      color: #fff;
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      box-shadow: 0 4px 16px rgba(22,163,74,0.4);
+      z-index: 999;
+      transition: transform 0.2s;
+    }
+    .wa-float:hover { transform: scale(1.08); }
+
+    /* ----- MOBILE MENU (light) ----- */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      padding: 12px 20px 16px;
+      border-top: 1px solid var(--border);
+      gap: 2px;
+      background: #fff;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 10px 12px;
+      font-size: 0.9rem;
+      color: #333;
+      border-radius: 8px;
+    }
+    .mobile-menu a:hover { background: #fef2f2; color: var(--accent); }
+
+    /* ----- RESPONSIVE ----- */
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { padding: 28px 20px 36px; }
+      section { padding: 40px 20px; }
+      .features-inner { padding: 32px 20px; }
+      .cta-section { padding: 0 20px 48px; }
+      .cta-box { padding: 32px 24px; flex-direction: column; }
+      .cta-wa { width: 100%; justify-content: center; }
+      footer { padding: 32px 20px 20px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION (light) -->
+  <nav id="topbar">
+    <div class="logo">Ayshtro <span>Tech</span></div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#branches">Branches</a>
+      <a href="#resources">Resources</a>
+      <a href="#about">About</a>
+      <a href="https://wa.me/919745745513" class="btn-wa" target="_blank">
+        <i class="fab fa-whatsapp"></i> Get Help
+      </a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+    <a href="#branches">Branches</a>
+    <a href="#resources">Resources</a>
+    <a href="#about">About</a>
+    <a href="https://wa.me/919745745513" target="_blank" style="color:#16a34a; font-weight:600">
+      <i class="fab fa-whatsapp"></i> Get Help on WhatsApp
+    </a>
+  </div>
+
+  <!-- HERO SECTION -->
+  <div class="hero">
+    <div class="tag">Engineering Resources · Kerala</div>
+    <h1>Final Year <em>Project Ideas</em></h1>
+    <p>Curated topics with expert guidance for Diploma &amp; B.Tech students across all branches.</p>
+    <a href="https://wa.me/919745745513" class="hero-btn" target="_blank">
+      <i class="fab fa-whatsapp"></i> പ്രൊജക്ടുകൾക്കായി ബന്ധപ്പെടുക
+    </a>
+  </div>
+
+  <!-- BRANCH SECTION (featured) -->
+  <section id="branches">
+    <div class="section-label">Featured</div>
+    <h2>Choose Your <em>Branch</em></h2>
+    <p>Browse project topics organized by your engineering discipline.</p>
+    <div class="grid">
+
+      <a href="me_ptopics.html">
+        <div class="card">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600&auto=format')">
+            <span class="badge badge-blue">Popular</span>
+          </div>
+          <div class="card-body">
+            <div class="card-icon"><i class="fas fa-cogs"></i></div>
+            <h3>Mechanical Engineering</h3>
+            <p>Thermal systems, CAD/CAM, robotics and manufacturing processes.</p>
+            <div class="card-footer">
+              <span class="level">Diploma / B.Tech</span>
+              <span class="browse">Browse</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="ee_ptopics.html">
+        <div class="card">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1553406830-f6e44ac97624?w=600&auto=format')">
+            <span class="badge badge-red">High Demand</span>
+          </div>
+          <div class="card-body">
+            <div class="card-icon"><i class="fas fa-microchip"></i></div>
+            <h3>Electronics Engineering</h3>
+            <p>Embedded systems, VLSI, IoT and signal processing projects.</p>
+            <div class="card-footer">
+              <span class="level">Diploma / B.Tech</span>
+              <span class="browse">Browse</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="eee_ptopics.html">
+        <div class="card">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1562408590-e32931084e23?w=600&auto=format')">
+            <span class="badge badge-red">High Demand</span>
+          </div>
+          <div class="card-body">
+            <div class="card-icon"><i class="fas fa-plug"></i></div>
+            <h3>Electrical &amp; Electronics</h3>
+            <p>Power electronics, drives, control systems and smart grids.</p>
+            <div class="card-footer">
+              <span class="level">Diploma / B.Tech</span>
+              <span class="browse">Browse</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#">
+        <div class="card">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&auto=format')">
+            <span class="badge badge-blue">Popular</span>
+          </div>
+          <div class="card-body">
+            <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+            <h3>Computer Science</h3>
+            <p>AI, machine learning, cybersecurity and cloud computing.</p>
+            <div class="card-footer">
+              <span class="level">Diploma / B.Tech</span>
+              <span class="browse">Browse</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#">
+        <div class="card">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=600&auto=format')">
+            <span class="badge badge-green">Industry Focus</span>
+          </div>
+          <div class="card-body">
+            <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Instrumentation</h3>
+            <p>PLC, SCADA, process control and industrial automation.</p>
+            <div class="card-footer">
+              <span class="level">Diploma / B.Tech</span>
+              <span class="browse">Browse</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- FEATURES STRIP (light) -->
+  <div class="features">
+    <div class="features-inner">
+      <div class="feat">
+        <div class="feat-icon"><i class="fas fa-layer-group"></i></div>
+        <div>
+          <h4>Branch-wise Topics</h4>
+          <p>Organized by discipline for quick discovery.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon"><i class="fas fa-lightbulb"></i></div>
+        <div>
+          <h4>Latest Ideas 2026</h4>
+          <p>Updated with trending tech and industry topics.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon"><i class="fas fa-headset"></i></div>
+        <div>
+          <h4>1:1 Mentoring</h4>
+          <p>Expert support throughout your project journey.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon"><i class="fas fa-file-alt"></i></div>
+        <div>
+          <h4>Full Deliverables</h4>
+          <p>Report, PPT, code and project documentation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MORE BRANCHES (additional resources) -->
+  <section id="resources">
+    <div class="section-label">All Departments</div>
+    <h2>More <em>Branches</em></h2>
+    <p>Explore topics across all engineering specializations.</p>
+    <div class="grid">
+
+      <a href="#">
+        <div class="card">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=600&auto=format')"></div>
+          <div class="card-body">
+            <div class="card-icon"><i class="fas fa-heartbeat"></i></div>
+            <h3>Biomedical Engineering</h3>
+            <p>Medical devices, imaging, prosthetics and rehabilitation.</p>
+            <div class="card-footer">
+              <span class="level">Diploma / B.Tech</span>
+              <span class="browse">Browse</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#">
+        <div class="card">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&auto=format')"></div>
+          <div class="card-body">
+            <div class="card-icon"><i class="fas fa-bolt"></i></div>
+            <h3>Electrical Engineering</h3>
+            <p>Power systems, renewable energy, smart grids and drives.</p>
+            <div class="card-footer">
+              <span class="level">Diploma / B.Tech</span>
+              <span class="browse">Browse</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#">
+        <div class="card">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&auto=format')"></div>
+          <div class="card-body">
+            <div class="card-icon"><i class="fas fa-drafting-compass"></i></div>
+            <h3>Civil Engineering</h3>
+            <p>Structural analysis, transportation and sustainable construction.</p>
+            <div class="card-footer">
+              <span class="level">Diploma / B.Tech</span>
+              <span class="browse">Browse</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- CTA BOX (final year project assistance) -->
+  <div class="cta-section">
+    <div class="cta-box">
+      <div>
+        <h3>Need a Custom Final Year Project?</h3>
+        <p></p>
+      </div>
+      <a href="https://wa.me/919745745513?text=Hello! I need guidance for my final year project." class="cta-wa" target="_blank">
+        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER (light) -->
+  <footer id="about">
+    <div class="logo">Ayshtro <span>Tech</span> <span style="color:#999; font-weight:400; font-size:0.8rem; margin-left:8px">© 2025</span></div>
+    <p>Empowering engineering students across Kerala.</p>
+    <div class="social-links">
+      <a href="https://wa.me/919745745513" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/919745745513" class="wa-float" target="_blank" title="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // hamburger toggle + close on link click
+    const ham = document.getElementById('hamburger');
+    const menu = document.getElementById('mobileMenu');
+    ham.addEventListener('click', () => menu.classList.toggle('open'));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+    // subtle shadow on scroll for nav (light theme)
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('topbar');
+      if (window.scrollY > 4) {
+        nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.07)';
+      } else {
+        nav.style.boxShadow = '';
+      }
+    });
+  </script>
+</body>
+</html>
